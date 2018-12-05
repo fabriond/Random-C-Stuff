@@ -77,9 +77,9 @@ public:
     }
 
     /**
-     * Finds the node in the given index in the XorList
-     * @param index is the index of the searched node in the XorList
-     * @return Reference to the node that is in the given index of the XorList
+     * Finds the node in the given position in the XorList
+     * @param index is the position of the researched node in the XorList
+     * @return Reference to the node that is in the given position of the XorList
      * or NULL if the index is outside the XorList range
      */
     XorNode<T>* get(unsigned long index){
