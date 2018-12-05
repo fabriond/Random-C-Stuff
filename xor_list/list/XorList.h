@@ -77,12 +77,31 @@ public:
     }
 
     /**
-     * Finds the first node that contains an element in the XorList
-     * @param element to find
-     * @return Reference to the first node that contains the given element
-     * or NULL if there are no nodes that contain the given element
+     * Finds the node in the given index in the XorList
+     * @param index is the index of the searched node in the XorList
+     * @return Reference to the node that is in the given index of the XorList
+     * or NULL if the index is outside the XorList range
      */
-    XorNode<T>* find(T element){
+    XorNode<T>* get(unsigned long index){
+        XorNode<T> *prev = NULL;
+        XorNode<T> *current = first;
+        XorNode<T> *next;
+
+        for(unsigned long current_index = 0; current != NULL && current_index < index; ++current_index){
+            next = current->next(prev);
+            prev = current;
+            current = next;
+        }
+
+        return current;
+    }
+
+    /**
+     * Checks if the XorList contains any node with the given element
+     * @param element to find
+     * @return 1 if the element is in the XorList, 0 otherwise
+     */
+    bool contains(T element){
         XorNode<T> *prev = NULL;
         XorNode<T> *current = first;
         XorNode<T> *next;
@@ -93,7 +112,7 @@ public:
             current = next;
         }
 
-        return current;
+        return current != NULL;
     }
 
     /**
